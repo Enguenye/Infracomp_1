@@ -10,9 +10,10 @@ public class ClienteThread extends Thread{
 	 * Le asina al cliente el numero de mensajes a mandar.
 	 * @param numMensajes numero de mensajes que va a mandar el cliente.
 	 */
-	public ClienteThread(int numMensajes)
+	public ClienteThread(int numMensajes, Buffer buffer)
 	{
 		this.numMensajes = numMensajes;
+		this.buffer = buffer;
 	}
 	
 	/**
@@ -25,6 +26,7 @@ public class ClienteThread extends Thread{
 			Mensaje m = new Mensaje(i);
 			buffer.recibirMensaje(m);
 		}
+		buffer.descontarClientes();
 	}
 
 }
